@@ -117,7 +117,7 @@ resource "null_resource" "bootstrap" {
 resource "aws_secretsmanager_secret" "drdb-admin-pass" {
   ## OPTIONAL
   description             = "Admin password to be used for the PostgreSQL DB"
-  name                    = "${var.prefix}-drdb-admin-pass"
+  name                    = "${var.prefix}-orca-${var.drdb-admin-pass}"
   recovery_window_in_days = 0
   tags                    = local.tags
 }
@@ -125,7 +125,12 @@ resource "aws_secretsmanager_secret" "drdb-admin-pass" {
 
 resource "aws_secretsmanager_secret_version" "drdb-admin-pass" {
   ## REQUIRED
-  secret_id = aws_secretsmanager_secret.drdb-admin-pass.id
+  secret_id = aws_secretsmanager_secret.sm_drdb_admin_pass.id
+  lifecycle {
+    replace_on_change {
+      foobar = var.postgres_user_pw
+    }
+  }
 
   ## OPTIONAL
   secret_string = var.postgres_user_pw
@@ -137,7 +142,7 @@ resource "aws_secretsmanager_secret_version" "drdb-admin-pass" {
 resource "aws_secretsmanager_secret" "drdb-user-pass" {
   ## OPTIONAL
   description             = "Application user password to be used for the PostgreSQL DB"
-  name                    = "${var.prefix}-drdb-user-pass"
+  name                    = "${var.prefix}-${var.sm_drdb_user_pass}"
   recovery_window_in_days = 0
   tags                    = local.tags
 }
@@ -157,7 +162,7 @@ resource "aws_secretsmanager_secret_version" "drdb-user-pass" {
 resource "aws_secretsmanager_secret" "drdb-host" {
   ## OPTIONAL
   description             = "PostgreSQL Host Address"
-  name                    = "${var.prefix}-drdb-host"
+  name                    = "${var.prefix}-${var.sm_drdb_host}"
   recovery_window_in_days = 0
   tags                    = local.tags
 }

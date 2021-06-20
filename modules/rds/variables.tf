@@ -76,3 +76,30 @@ variable "database_name" {
   type        = string
   description = "Name of the ORCA database in PostgreSQL"
 }
+
+## OPTIONAL Name of admin password to be used for the PostgreSQL DB 
+variable "drdb-admin-pass" {
+  type = string
+  description = "Admin password to be used for the PostgreSQL DB"
+}
+
+
+## OPTIONAL Name of admin password to be used for the PostgreSQL DB 
+variable "sm-drdb-admin-pass" {
+  type = string
+  description = "Admin password to be used for the PostgreSQL DB"
+}
+
+
+## OPTIONAL Name of user password to be used for the PostgreSQL DB 
+variable "sm-drdb-user-pass" {
+  type = string
+  description = "User password to be used for the PostgreSQL DB"
+}
+
+
+## OPTIONAL Name of DB host to be used to connect to PostgreSQL DB 
+variable "sm-drdb-host" {
+  type = string
+  description = "DB host to be used to connect to PostgreSQL DB"
+}

@@ -214,3 +214,28 @@ variable "orca_recovery_retrieval_type" {
   description = "AWS glacier recovery type to use. One of Bulk, Standard, Express."
   default     = "Standard"
 }
+
+
+## Name of admin password to be used for the PostgreSQL DB 
+variable "sm_drdb_admin_pass" {
+  type = string
+  description = "Admin password to be used for the PostgreSQL DB"
+  default = "drdb-admin-pass"
+}
+
+
+
+
+## OPTIONAL Name of user password to be used for the PostgreSQL DB 
+variable "sm_drdb_user_pass" {
+  type = string
+  description = "User password to be used for the PostgreSQL DB"
+  default = "drdb-user-pass"
+}
+
+## OPTIONAL Name of DB host to be used to connect to PostgreSQL DB 
+variable "sm_drdb_host" {
+  type = string
+  description = "DB host to be used to connect to PostgreSQL DB"
+  default = "drdb-host"
+}

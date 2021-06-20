@@ -67,6 +67,11 @@ module "orca" {
   sqs_maximum_message_size                     = var.sqs_maximum_message_size
   staged_recovery_queue_message_retention_time = var.staged_recovery_queue_message_retention_time
   status_update_queue_message_retention_time   = var.status_update_queue_message_retention_time
+  sm_drdb_admin_pass = var.sm_drdb_admin_pass
+  sm_drdb_host = var.sm_drdb_host
+  sm_drdb_user_pass = var.sm_drdb_user_pass
+  
+
 
   ## OPTIONAL (DO NOT CHANGE DEFAULT VALUES!)
   database_app_user            = var.database_app_user
